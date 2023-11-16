@@ -1,5 +1,7 @@
 import pandas as pd
 import statistics
+import matplotlib.pyplot as plt
+
 
 # Lecture CSV file 
 file_path = 'jfreechart-test-stats.csv'
@@ -28,6 +30,26 @@ print("mediane pour TLOC : " + tloc_mediane)
 print("mediane pour WMC : " + wmc_mediane)
 
 print("mediane pour TASSERT : " + tassert_mediane)
+
+
+data = {
+    'TLOC': tloc_values,
+    'WMC': wmc_values,
+    'TASSERT': tassert_values,
+}
+
+df = pd.DataFrame(data)
+
+# Création des boîtes à moustaches
+plt.boxplot([df['TLOC'], df['WMC'], df['TASSERT']], labels=['TLOC', 'WMC', 'TASSERT'])
+
+# Ajoutez un titre et des étiquettes d'axe
+plt.title('Boîtes à moustaches pour TLOC, WMC et TASSERT')
+plt.xlabel('Métriques')
+plt.ylabel('NombreS')
+
+# Affichez la boîte à moustaches
+plt.show()
 
 
 #source : https://www.w3schools.com/python/ref_stat_median.asp#:~:text=The%20statistics.,in%20a%20set%20of%20data.
