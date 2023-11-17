@@ -48,9 +48,18 @@ plt.title('Boîtes à moustaches pour TLOC, WMC et TASSERT')
 plt.xlabel('Métriques')
 plt.ylabel('NombreS')
 
+
+
+fig1, ax1 = plt.subplots()
+
+ax1.scatter(tassert_values, wmc_values)
+
+fig2, ax2 = plt.subplots()
+
+ax2.scatter(tassert_values, tloc_values)
+
 # Affichez la boîte à moustaches
 plt.show()
-
 
 #source : https://www.w3schools.com/python/ref_stat_median.asp#:~:text=The%20statistics.,in%20a%20set%20of%20data.
 #https://www.data-transitionnumerique.com/boite-moustache-boxplot/  
