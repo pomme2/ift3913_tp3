@@ -53,4 +53,4 @@ plt.show()
 
 
 #source : https://www.w3schools.com/python/ref_stat_median.asp#:~:text=The%20statistics.,in%20a%20set%20of%20data.
-#https://www.data-transitionnumerique.com/boite-moustache-boxplot/
+#https://www.data-transitionnumerique.com/boite-moustache-boxplot/  
