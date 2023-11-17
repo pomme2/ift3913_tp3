@@ -71,12 +71,15 @@ plt.scatter(tassert_values, wmc_values)
 
 # Label axes and title
 plt.title('WMC en fonction de TASSERT')
-plt.xlabel('TLOC')
-plt.ylabel('TASSERT')
+plt.xlabel('TASSERT')
+plt.ylabel('WMC')
 
 # Plot regression line
 plt.plot(tassert_values,linreg,'k',label='y={:.2f}x+{:.2f}'.format(slope,intercept))
 plt.legend(loc='upper left')
+
+# Show r^2 value on plot
+plt.annotate("r^2 = {:.3f}".format(r**2), xy=(225,50))
 
 ### TLOC en fonction de TASSERT ###
 
@@ -98,12 +101,15 @@ plt.scatter(tassert_values, tloc_values)
 
 # Label axes and title
 plt.title('TLOC en fonction de TASSERT')
-plt.xlabel('TLOC')
-plt.ylabel('TASSERT')
+plt.xlabel('TASSERT')
+plt.ylabel('TLOC')
 
 # Plot regression line
 plt.plot(tassert_values,linreg,color='k',label='y={:.2f}x+{:.2f}'.format(slope,intercept))
 plt.legend(loc='upper left')
+
+# Show r^2 value on plot
+plt.annotate("r^2 = {:.3f}".format(r**2), xy=(225,650))
 
 plt.show()
 
