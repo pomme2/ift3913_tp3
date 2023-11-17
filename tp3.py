@@ -48,10 +48,7 @@ plt.boxplot([df['TLOC'], df['WMC'], df['TASSERT']], labels=['TLOC', 'WMC', 'TASS
 # Ajoute titres des axes
 plt.title('Boîtes à moustaches pour TLOC, WMC et TASSERT')
 plt.xlabel('Métriques')
-plt.ylabel('NombreS')
-
-
-
+plt.ylabel('Nombres')
 
 
 ### WMC en fonction de TASSERT ###
@@ -72,9 +69,14 @@ linreg = list(map(calcY, tassert_values))
 # Create graph
 plt.scatter(tassert_values, wmc_values)
 
-# Plot regression line
-plt.plot(tassert_values,linreg,color='k')
+# Label axes and title
+plt.title('WMC en fonction de TASSERT')
+plt.xlabel('TLOC')
+plt.ylabel('TASSERT')
 
+# Plot regression line
+plt.plot(tassert_values,linreg,'k',label='y={:.2f}x+{:.2f}'.format(slope,intercept))
+plt.legend(loc='upper left')
 
 ### TLOC en fonction de TASSERT ###
 
@@ -94,8 +96,14 @@ linreg = list(map(calcY, tassert_values))
 # Create graph
 plt.scatter(tassert_values, tloc_values)
 
+# Label axes and title
+plt.title('TLOC en fonction de TASSERT')
+plt.xlabel('TLOC')
+plt.ylabel('TASSERT')
+
 # Plot regression line
-plt.plot(tassert_values,linreg,color='k')
+plt.plot(tassert_values,linreg,color='k',label='y={:.2f}x+{:.2f}'.format(slope,intercept))
+plt.legend(loc='upper left')
 
 plt.show()
 
