@@ -1,24 +1,26 @@
 import pandas as pd
 import statistics
 import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
 
 
 # Lecture CSV file 
 file_path = 'jfreechart-test-stats.csv'
-#Pour separer les columns
+# Pour separer les columns
 df = pd.read_csv(file_path, delimiter=',', skiprows=1, header=None)
 
-#column names 
+# Column names 
 column_names = ['class', 'TLOC', 'WMC', 'TASSERT']  # Adjust based on your actual column names
 
 df.columns = column_names
 
-# ajoute tout les TLOC, WMC, TASSERT dans leurs array assign
+# Ajoute tout les TLOC, WMC, TASSERT dans leurs array assign
 tloc_values = df['TLOC'].tolist()
 wmc_values = df['WMC'].tolist()
 tassert_values = df['TASSERT'].tolist()
 
-#avec l'aide de statistics calcule la mediane et la retourne
+# Avec l'aide de statistics calcule la mediane et la retourne
 tloc_mediane = str(statistics.median(tloc_values))
 
 wmc_mediane = str(statistics.median(wmc_values))
@@ -50,16 +52,53 @@ plt.ylabel('NombreS')
 
 
 
-fig1, ax1 = plt.subplots()
 
-ax1.scatter(tassert_values, wmc_values)
 
-fig2, ax2 = plt.subplots()
+### WMC en fonction de TASSERT ###
 
-ax2.scatter(tassert_values, tloc_values)
+# Create new figure
+plt.figure()
 
-# Affichez la boîte à moustaches
+# Calculate key values
+slope, intercept, r, p, std_err = stats.linregress(tassert_values, wmc_values)
+
+# Function to calculate y using mx + b
+def calcY(x):
+    return slope * x + intercept
+
+# Linear regression (y = mx + b)
+linreg = list(map(calcY, tassert_values))
+
+# Create graph
+plt.scatter(tassert_values, wmc_values)
+
+# Plot regression line
+plt.plot(tassert_values,linreg,color='k')
+
+
+### TLOC en fonction de TASSERT ###
+
+# Create new figure
+plt.figure()
+
+# Calculate key values
+slope, intercept, r, p, std_err = stats.linregress(tassert_values, tloc_values)
+
+# Function to calculate y using mx + b
+def calcY(x):
+    return slope * x + intercept
+
+# Linear regression (y = mx + b)
+linreg = list(map(calcY, tassert_values))
+
+# Create graph
+plt.scatter(tassert_values, tloc_values)
+
+# Plot regression line
+plt.plot(tassert_values,linreg,color='k')
+
 plt.show()
 
-#source : https://www.w3schools.com/python/ref_stat_median.asp#:~:text=The%20statistics.,in%20a%20set%20of%20data.
-#https://www.data-transitionnumerique.com/boite-moustache-boxplot/  
+# source : https://www.w3schools.com/python/ref_stat_median.asp#:~:text=The%20statistics.,in%20a%20set%20of%20data.
+# https://www.data-transitionnumerique.com/boite-moustache-boxplot/
+# https://www.w3schools.com/python/python_ml_linear_regression.asp 
