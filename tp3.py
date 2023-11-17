@@ -43,7 +43,7 @@ df = pd.DataFrame(data)
 # Création des boîtes à moustaches
 plt.boxplot([df['TLOC'], df['WMC'], df['TASSERT']], labels=['TLOC', 'WMC', 'TASSERT'])
 
-# Ajoutez un titre et des étiquettes d'axe
+# Ajoute titres des axes
 plt.title('Boîtes à moustaches pour TLOC, WMC et TASSERT')
 plt.xlabel('Métriques')
 plt.ylabel('NombreS')
