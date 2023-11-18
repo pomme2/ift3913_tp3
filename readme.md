@@ -1,6 +1,6 @@
 # IFT-3913 TP 3
 
-## Par Satyam Chowdhury et Carlos Eduardo Calle Guerrero
+## Par Satyam Chowdhury et Carlos Eduardo Calle Guerrero 20220633
 
 Pour run le fichier, il faut intepréter le fichier avec un interpreteur de Python ayant les librairies suivant installés:
 
